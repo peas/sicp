@@ -61,11 +61,12 @@
 
 
 (define (pascal x y)
-	(if (or (= y 0) (<= x 1)) 1
+	(display x)(display " ")(display y)	(newline)	
+	(if (or (= y x) (= y 0)) 1
 		(+ (pascal (- x 1) y) (pascal (- x 1) (- y 1)))
 	)
 )
 
-(pascal 4 2)
+(pascal 5 3)
 
 
