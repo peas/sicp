@@ -129,3 +129,4 @@
 (assert 28 (pontos '(5 5 5 5 1 1)))
 (assert 38 (pontos '(1 1 10 5 5 1 4)))
 
+
