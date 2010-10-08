@@ -97,4 +97,14 @@
 (exp-fast 2 8)
 (exp-fast 2 17)
 
+(define (minimo-divisor n x)
+	(cond 	((= (remainder n x) 0) x)
+			((>= (* x x) n) n)
+			(#t (minimo-divisor n (+ x 1)))))
 
+(define (minimod n)
+	(minimo-divisor n 2))
+
+(minimod 1)
+(minimod 17)
+(minimod 21)
