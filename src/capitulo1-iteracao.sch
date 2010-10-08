@@ -43,6 +43,7 @@
 (moeda 5)
 (moeda 7)
 
+; recursivo, exponencial
 (define (t quantia tipo_moeda)
 	(cond 	((= quantia  0) 1) ; bateu exato, é valido
 			((or (< quantia 0) (= tipo_moeda 0)) 0)
@@ -59,7 +60,7 @@
 
 (troco 100)
 
-
+; basicao recursivo linear
 (define (pascal x y)
 	(display x)(display " ")(display y)	(newline)	
 	(if (or (= y x) (= y 0)) 1
