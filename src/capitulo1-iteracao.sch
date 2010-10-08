@@ -70,3 +70,16 @@
 (pascal 5 3)
 
 
+;; exponeciacao
+
+(define (exponenciacao x n)
+	(cond 	[(= n 0) 1]
+			[(= 0 (remainder n 2)) (* (exponenciacao x (/ n 2)) (exponenciacao x (/ n 2)))]
+			[else (* x (exponenciacao x (- n 1)))]))
+
+(exponenciacao 2 5)
+(exponenciacao 2 6)
+(exponenciacao 2 7)
+(exponenciacao 2 8)
+
+
