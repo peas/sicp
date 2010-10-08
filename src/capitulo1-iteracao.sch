@@ -71,3 +71,30 @@
 (pascal 5 3)
 
 
+;; exponeciacao
+
+(define (exponenciacao x n)
+	(cond 	[(= n 0) 1]
+			[(= 0 (remainder n 2)) (* (exponenciacao x (/ n 2)) (exponenciacao x (/ n 2)))]
+			[else (* x (exponenciacao x (- n 1)))]))
+
+(exponenciacao 2 5)
+(exponenciacao 2 6)
+(exponenciacao 2 7)
+(exponenciacao 2 8)
+
+;1.16 ab^n é a invariante
+(define (exp b n a)
+	(cond 	[(= n 0) a]
+			[(= 0 (remainder n 2)) (exp (* b b) (/ n 2) a)]
+			[else (exp b (- n 1) (* a b))]))
+
+(define (exp-fast x n) (exp x n 1))
+
+(exp-fast 2 5)
+(exp-fast 2 6)
+(exp-fast 2 7)
+(exp-fast 2 8)
+(exp-fast 2 17)
+
+
