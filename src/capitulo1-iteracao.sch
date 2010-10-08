@@ -94,7 +94,6 @@
 (exp-fast 2 6)
 (exp-fast 2 7)
 (exp-fast 2 8)
-
 (exp-fast 2 17)
 
 
