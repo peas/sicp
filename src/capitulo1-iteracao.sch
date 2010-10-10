@@ -108,3 +108,6 @@
 (minimod 1)
 (minimod 17)
 (minimod 21)
+
+(define (even? x) (= 0 (remainder x 2)))
+
