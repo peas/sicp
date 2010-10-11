@@ -47,4 +47,15 @@
 	(integral-simpson cube 0.0 1.0 100)
 	(integral-simpson cube 0.0 1.0 1000)
 
-;; 1.30 versao iterativa da soma 
+;; 1.30 versao iterativa da soma
+
+(define (sigma-i a term next b)
+	(define (sigma-iter n result)
+		(if (> n b) 
+			result
+			(sigma-iter (next n) (+ result (term n)))))
+	(sigma-iter a 0)) 
+
+(sigma-i 1 identity inc 100)
+(* 8 (sigma-i 1 term-pi next-pi 1000))
+(sigma-i 1 cube inc 100)
