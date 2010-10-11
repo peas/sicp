@@ -59,3 +59,18 @@
 (sigma-i 1 identity inc 100)
 (* 8 (sigma-i 1 term-pi next-pi 1000))
 (sigma-i 1 cube inc 100)
+
+
+(define (accumulate combiner null-value a term next b)
+	(if (> a b) 
+		null-value
+		(combiner (term a) (sigma (next a) term next b))))
+
+
+(define (sigma-a a term next b) (accumulate + 0 a term next b))
+(define (product a term next b) (accumulate * 1 a term next b))
+
+(sigma-a 1 identity inc 100)
+(* 8 (sigma-a 1 term-pi next-pi 1000))
+(sigma-a 1 cube inc 100)
+
