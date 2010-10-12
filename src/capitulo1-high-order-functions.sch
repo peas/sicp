@@ -77,10 +77,10 @@
 
 ; accumulate versao com processamento iterativo
 (define (accumulate2 combiner null-value a term next b)
-	(define (accumulate-iter a result) 
-		(if (> a b) 
-			null-value
-			(accumulate-iter (next a) (combiner result (term a)))))
+	(define (accumulate-iter n result) 
+		(if (> n b) 
+			result
+			(accumulate-iter (next n) (combiner result (term n)))))
 		(accumulate-iter a null-value))
 
 (define (sigma-a2 a term next b) (accumulate2 + 0 a term next b))
