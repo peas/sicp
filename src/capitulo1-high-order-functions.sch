@@ -73,3 +73,20 @@
 (sigma-a 1 identity inc 100)
 (* 8 (sigma-a 1 term-pi next-pi 1000))
 (sigma-a 1 cube inc 100)
+
+
+; accumulate versao com processamento iterativo
+(define (accumulate2 combiner null-value a term next b)
+	(define (accumulate-iter a result) 
+		(if (> a b) 
+			null-value
+			(accumulate-iter (next a) (combiner result (term a)))))
+		(accumulate-iter a null-value))
+
+(define (sigma-a2 a term next b) (accumulate2 + 0 a term next b))
+(define (product2 a term next b) (accumulate2 * 1 a term next b))
+
+
+(sigma-a2 1 identity inc 100)
+(* 8 (sigma-a2 1 term-pi next-pi 1000))
+(sigma-a2 1 cube inc 100)
