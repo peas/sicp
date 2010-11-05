@@ -96,5 +96,18 @@
 (define average (lambda (x y) (/ (+ x y) 2.0)))
 (average 3 4)
 
+(define tolerance 0.000001)
+(define (fixed-point f guess)
+	(define (good? v1 v2) (< (abs (- v1 v2)) tolerance))
+	(define (try x)
+		(let ((next-x (f x)))
+			(if (good? x next-x) next-x (try next-x))))
+	(try guess))
 
 
+(fixed-point cos 1)
+
+(define (raiz x) (fixed-point (lambda (y) (average y (/ x y))) 1.0))
+
+(raiz 2.0)
+(raiz 4.0)
