@@ -92,3 +92,9 @@
 (sigma-a2 1 cube inc 100)
 
 
+
+(define average (lambda (x y) (/ (+ x y) 2.0)))
+(average 3 4)
+
+
+
