@@ -1,3 +1,5 @@
+#lang racket
+
 
 (define q (list 1 4 9 16))
 
@@ -25,10 +27,10 @@
 
 
 (define (reverse list)
-	(define (reverse2 actual-list element result)
+	(define (reverse2 rest result)
 		(if (null? rest) 
-			(cons element result)
-			(cons (reverse2 (car rest) (cdr rest)) before)))
+			result
+		(reverse2 (cdr rest) (cons (car rest) result))))
 	(reverse2 list '()))
 
 (reverse q)
