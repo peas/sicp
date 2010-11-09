@@ -34,3 +34,11 @@
 	(reverse2 list '()))
 
 (reverse q)
+
+; nao funciona direito pq faz cons de pair com elemento em vez de elemento com  pair
+(define (reverse-nt list)
+		(if (null? list) 
+			'()
+		(cons (reverse-nt (cdr list)) (car list))))
+
+(reverse-nt q)
