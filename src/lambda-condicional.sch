@@ -12,7 +12,9 @@
 
 ; se B1 for verdadeirao, vai devolver B2
 ; senao devolve F de cara!
-(define and (lambda (b1 b2) (b1 b2 F)))
+;(define and (lambda (b1 b2) (b1 b2 F)))
+;outra versao:
+(define and (lambda (b1 b2) (b1 b2 b1)))
 
 (mostra (and T T))
 (mostra (and T F))
@@ -21,7 +23,9 @@
 
 ; se b1 for verdadeiro, devolve T de cara
 ; senao devolve b2
-(define or (lambda (b1 b2) (b1 T b2)))
+;(define or (lambda (b1 b2) (b1 T b2)))
+; outra versao:
+(define or (lambda (b1 b2) (b1 b1 b2)))
 
 (newline)
 (mostra (or T T))
@@ -37,4 +41,5 @@
 
 (mostra (negacao T))
 (mostra (negacao F))
+
 
