@@ -39,7 +39,7 @@
 
 ; n1(f), pega o resultado e 
 (define (soma n1 n2)
-	(lambda (f) (lambda (x) ((n2 (n1 f)) x))))
+(lambda (f) (lambda (x) (   (((n1 f) x) ((n2 f) x))    ))))
 
 (newline)
 (mostra (soma -dois -um))
