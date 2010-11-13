@@ -29,20 +29,35 @@
 	
 
 (define -um (inc zero))
-(define -dois (inc um))
-(define -tres (inc dois))
+(define -dois (inc -um))
+(define -tres (inc -dois))
+(define -quatro (inc -tres))
 
 (mostra zero)
 (mostra -um)
 (mostra -dois)
 (mostra -tres)
 
+; soma, mais dificl que a multiplicacao
+; aplica n1 vezes f em x, e depois, nesse resultado, aplica n2 vezes f
+; da para eliminar o x como na mult?
+(define (soma n1 n2)
+	(lambda (f) (lambda (x) ((n2 f)   ((n1 f) x) ) )))
+
+(newline)
+(mostra (soma -dois -um))
+(mostra (soma -um -dois))
+(mostra (soma -dois -dois))
+(mostra (soma -dois -tres))
+(mostra (soma -tres -dois))
+(mostra (soma -dois -quatro))
+(mostra (soma -tres zero)) ; errado!
 
 ; facil! n1(n2(f)) aplicado em x
 ;(define (mult n1 n2)
 	;(lambda (f) (lambda (x) ((n2 (n1 f)) x))))
 	
-; reduzindo:
+; reduzindo depois de ler o paper:
 (define (mult n1 n2)
 	(lambda (f) (n2 (n1 f))))
 
@@ -53,3 +68,17 @@
 (mostra (mult -dois -tres))
 (mostra (mult -tres -dois))
 (mostra (mult -tres zero))
+
+
+; mais um sem querer!! preciso entender esse
+(define (exp n1 n2)
+	(lambda (f) (lambda (x) (((n2 n1) f) x)))  )
+
+(newline)
+(mostra (exp -dois -um))
+(mostra (exp -um -dois))
+(mostra (exp -dois -dois))
+(mostra (exp -dois -tres))
+(mostra (exp -tres -dois))
+(mostra (exp -dois -quatro))
+(mostra (exp -tres zero)) ; errado!
