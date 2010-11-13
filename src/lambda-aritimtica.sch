@@ -1,5 +1,7 @@
 #lang racket
 
+; numeros de Church expandidos. use isso para perceber o que eh
+; pense que é como um inject, vai aplicando o retorno em f
 
 (define zero 
 	(lambda (f) (lambda (x) x)))
@@ -13,6 +15,7 @@
 (define tres
 	(lambda (f) (lambda (x) (f (f (f x))))))
 
+; se f é x+1, e o inicial é zero, vira os numeros naturais
 (define (mostra numero) ((numero (lambda (x) (+ x 1))) 0))
 
 (mostra zero)
@@ -81,4 +84,4 @@
 (mostra (exp -dois -tres))
 (mostra (exp -tres -dois))
 (mostra (exp -dois -quatro))
-(mostra (exp -tres zero)) ; errado!
+(mostra (exp -tres zero)) 
