@@ -37,21 +37,14 @@
 (mostra -dois)
 (mostra -tres)
 
-; n1(f), pega o resultado e 
-(define (soma n1 n2)
-(lambda (f) (lambda (x) (   (((n1 f) x) ((n2 f) x))    ))))
-
-(newline)
-(mostra (soma -dois -um))
-(mostra (soma -um -dois))
-(mostra (soma -dois -dois))
-(mostra (soma -dois -tres))
-(mostra (soma -tres -dois))
-(mostra (soma -tres zero))
 
 ; facil! n1(n2(f)) aplicado em x
+;(define (mult n1 n2)
+	;(lambda (f) (lambda (x) ((n2 (n1 f)) x))))
+	
+; reduzindo:
 (define (mult n1 n2)
-	(lambda (f) (lambda (x) ((n2 (n1 f)) x))))
+	(lambda (f) (n2 (n1 f))))
 
 (newline)
 (mostra (mult -dois -um))
