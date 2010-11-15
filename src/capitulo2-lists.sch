@@ -1,5 +1,5 @@
 #lang racket
-
+(require rackunit)
 
 (define q (list 1 4 9 16))
 
@@ -14,16 +14,16 @@
 			list2
 	    (cons (car list1) (append (cdr list1) list2)))))
 		
-(count q)
-(append q i)
+(check-equal? (count q) 4)
+(check-equal? (append q i) '(1 4 9 16 1 3 5 7 9))
 
 (define (last list)
 	(define (last2 before rest)
 		(if (null? rest) before (last2 (car rest) (cdr rest))))
 	(last2 (car list) (cdr list)))
 
-(last q)
-(last i)
+(check-equal? (last q) 16)
+(check-equal? (last i) 9)
 
 
 (define (reverse list)
@@ -33,7 +33,7 @@
 		(reverse2 (cdr rest) (cons (car rest) result))))
 	(reverse2 list '()))
 
-(reverse q)
+(check-equal? (reverse q) '(16 9 4 1))
 
 ; nao funciona direito pq faz cons de pair com elemento em vez de elemento com  pair
 (define (reverse-nt list)
