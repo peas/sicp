@@ -42,3 +42,17 @@
 		(cons (reverse-nt (cdr list)) (car list))))
 
 (reverse-nt q)
+
+(define (mesma-paridade . w)
+	(define (paridade x lista)
+		(if (null? lista) 
+			lista
+			(if (eq? (remainder (car lista) 2) (remainder x 2))
+				(cons (car lista) (paridade x (cdr lista)))
+				(paridade x (cdr lista)))))
+	(paridade (car w) w))
+	
+(check-equal? (mesma-paridade 1 2 3 4 5 6 7) '(1 3 5 7))
+(check-equal? (mesma-paridade 2 3 4 5 6 7) '(2 4 6))
+	
+	
