@@ -55,4 +55,11 @@
 (check-equal? (mesma-paridade 1 2 3 4 5 6 7) '(1 3 5 7))
 (check-equal? (mesma-paridade 2 3 4 5 6 7) '(2 4 6))
 	
-	
+(define (map function list)
+	(if (null? list)
+		'()
+		(cons (function (car list)) (map function (cdr list)))))
+
+(define (square x) (* x x))
+(check-equal? (map square '(2 3 4 5)) '(4 9 16 25))
+
