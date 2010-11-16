@@ -20,3 +20,14 @@
 
 (check-equal? (count (list x x)) 2)
 (check-equal? (folhas (list x x)) 8)
+
+
+(define s1 (list 1 3 (list 5 7) 9))
+
+(define s2 (list (list 7)))
+
+(define s3 '( 1 ( 2 ( 3 ( 4 ( 5 ( 6 7)))))))
+
+(check-equal? (car (cdr (car (cddr s1)))) 7)
+(check-equal? (caar s2) 7)
+(check-equal? (car (cdr (car (cdr (car (cdr (car (cdr (car (cdr (car (cdr s3)))))))))))) 7)
