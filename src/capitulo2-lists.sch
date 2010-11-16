@@ -63,3 +63,20 @@
 (define (square x) (* x x))
 (check-equal? (map square '(2 3 4 5)) '(4 9 16 25))
 
+; 2.22 mesmo problema que inverter lista
+(define (square-list items)
+  (define (iter things answer)
+    (if (null? things)
+        answer
+        (iter (cdr things) 
+              (cons (square (car things))
+                    answer))))
+  (iter items '()))
+
+(square-list '(1 2 3 4))
+
+; 2.23
+(define (for-each function list)
+	(if (null? list) #t (begin (function (car list)) (for-each function (cdr list))) ))
+
+(for-each (lambda (x) (display x) (newline)) '( 1 2 4 5))
