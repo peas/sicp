@@ -40,3 +40,12 @@
 	(reverse2 tree '()))
 
 (check-equal? (reverse '((1 2) (3 4))) '((4 3) (2 1)))
+
+
+(define (fringe x)
+	(cond ((null? x) x)
+			((atom? x) 1)
+			(#t (cons (fringe (car x)) 
+			   (fringe (cdr x))))))
+			
+(check-equal? (fringe '((1 2) (3 4))) '(1 2 3 4))
