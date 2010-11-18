@@ -41,11 +41,12 @@
 
 (check-equal? (reverse '((1 2) (3 4))) '((4 3) (2 1)))
 
+; DFS
 
 (define (fringe x)
 	(cond ((null? x) x)
-			((atom? x) 1)
-			(#t (cons (fringe (car x)) 
+			((atom? x) (list x))
+			(#t (append (fringe (car x)) 
 			   (fringe (cdr x))))))
 			
 (check-equal? (fringe '((1 2) (3 4))) '(1 2 3 4))
