@@ -51,5 +51,16 @@
 			
 (check-equal? (fringe '((1 2) (3 4))) '(1 2 3 4))
 
-; map-tree baseando em map
+
+(define square (lambda (x) (* x x)))
+
+(define (map-tree f tree)
+	(map 
+		(lambda (x) 
+			(if (atom? x) (f x)
+		 		(map-tree f x)))
+		tree))
+
+(check-equal? (map-tree square '(1 (2 3) (4 5))) '(1 (4 9) (16 25)))
+
 ; (map (lambda (x) (display x) (newline)) '( 1 2 (3 4) 5))
