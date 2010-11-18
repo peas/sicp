@@ -50,3 +50,6 @@
 			   (fringe (cdr x))))))
 			
 (check-equal? (fringe '((1 2) (3 4))) '(1 2 3 4))
+
+; map-tree baseando em map
+; (map (lambda (x) (display x) (newline)) '( 1 2 (3 4) 5))
