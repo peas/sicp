@@ -31,3 +31,12 @@
 (check-equal? (car (cdr (car (cddr s1)))) 7)
 (check-equal? (caar s2) 7)
 (check-equal? (car (cdr (car (cdr (car (cdr (car (cdr (car (cdr (car (cdr s3)))))))))))) 7)
+
+
+(define (reverse tree)
+	(define (reverse2 rest result)
+		(cond 	((null? rest) result)
+				(#t (reverse2 (cdr rest) (cons (if (atom? (car rest)) (car rest) (reverse2 (car rest) '())) result)))))
+	(reverse2 tree '()))
+
+(check-equal? (reverse '((1 2) (3 4))) '((4 3) (2 1)))
