@@ -64,3 +64,12 @@
 (check-equal? (map-tree square '(1 (2 3) (4 5))) '(1 (4 9) (16 25)))
 
 ; (map (lambda (x) (display x) (newline)) '( 1 2 (3 4) 5))
+
+(define (powerset s)
+	(if (null? s) '(())
+		(let ((ps (powerset (cdr s))))
+			(append ps (map (lambda (x) (cons (car s) x)) ps )))))
+
+(powerset '())
+(powerset '(1))
+(powerset '(1 2 3))
