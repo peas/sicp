@@ -30,4 +30,17 @@
 
 (check-equal? (reverse-r '( 1 2 3 4)) '(4 3 2 1))
 
+(define (fold-left operation initial sequence)
+	(define (iter result rest)
+		(if (null? rest) result
+			(iter (operation  result (car rest)) (cdr rest))))
+	(iter initial sequence))
+
+(define (reverse-l x) (fold-left (lambda (x y) (cons y x)) '() x))
+
+(check-equal? (reverse-l '( 1 2 3 4)) '(4 3 2 1))
+
+(define fold-right accumulate)
+(fold-right / 1 (list 1 2 3))
+(fold-left / 1 (list 1 2 3))
 
