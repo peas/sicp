@@ -18,10 +18,13 @@
 ; se f é x+1, e o inicial é zero, vira os numeros naturais
 (define (mostra numero) ((numero (lambda (x) (+ x 1))) 0))
 
+(define (tostring numero) ((numero (lambda (x) ())) "x"))
+
 (mostra zero)
 (mostra um)
 (mostra dois)
 (mostra tres)
+(tostring tres)
 
 ; devolve uma nova funcao que, antes de fazer f(x), aplica
 ; n em f e pega esse resultado para aplicar em x (isso é, ((n(f))x) )
