@@ -18,7 +18,7 @@
 ; se f é x+1, e o inicial é zero, vira os numeros naturais
 (define (mostra numero) ((numero (lambda (x) (+ x 1))) 0))
 
-(define (tostring numero) ((numero (lambda (x) ())) "x"))
+(define (tostring numero) ((numero (lambda (x) (string-append "f(" x ")"))) "x"))
 
 (mostra zero)
 (mostra um)
