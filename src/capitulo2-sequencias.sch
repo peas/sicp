@@ -44,3 +44,16 @@
 (fold-right / 1 (list 1 2 3))
 (fold-left / 1 (list 1 2 3))
 
+
+(define (ennumerate-interval a b) 
+	(if (> a b) 
+		'()
+		(cons a (ennumerate-interval (+ 1 a) b))))
+
+(check-equal? (ennumerate-interval 1 4) '(1 2 3 4))
+
+; for aninhado!
+(map (lambda (i) (map (lambda (j) (list i j)) (ennumerate-interval 1 3))) (ennumerate-interval 1 5) )
+
+(define (flatmap x) (accumulate append '() x))
+
