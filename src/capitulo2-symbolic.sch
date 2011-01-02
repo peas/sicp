@@ -32,8 +32,6 @@
 			((= (entry set) x) set)
 			((> (entry set) x) (tree (entry set) (add x (left set)) (right set)))
 			((< (entry set) x) (tree (entry set) (left set) (add x (right set))))))
-			
-
 
 (define (set-to-list x)
 	(if (null? x) '()
@@ -44,5 +42,11 @@
 x
 (check-equal? '(0 1 2 3) (set-to-list x))
 			
+; usando o acumulador para evitar o append	
 			
-			
+(define (set-to-list2 set)
+	(define (copy-to-list x result))
+		(if (null? x) '()
+			(append (set-to-list (left x))
+		  	(cons (entry x) (set-to-list (right x)))))
+	(copy-to-list set '())
