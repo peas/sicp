@@ -68,6 +68,7 @@ z
 		)))
 
 (check-equal? (set-to-list (intersection x z)) '(0 2))
+(check-equal? (set-to-list (intersection z x)) '(0 2))
 (check-equal? (set-to-list (intersection y z)) '(8))
 (check-equal? (set-to-list (intersection y x)) '())
 
