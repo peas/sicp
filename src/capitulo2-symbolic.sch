@@ -15,3 +15,34 @@
 		
 (check-equal? (equal2? '(a b) '(a b)) #t)
 (check-equal? (equal2? '(a b) '(a c)) #f)
+
+; arvore binaria
+(define (entry x) (car x))
+(define (left x) (cadr x))
+(define (right x) (caddr x))
+(define (tree entry left right) (list entry left right))
+(define (element? x set) 
+	(cond	((null? set) false)
+			((= (entry set) x) true)
+			((< (entry set) x) (element? x (right x)))
+			((> (entry set) x) (element? x (left x)))))
+			
+(define (add x set)
+	(cond	((null? set) (tree x '() '()))
+			((= (entry set) x) set)
+			((> (entry set) x) (tree (entry set) (add x (left set)) (right set)))
+			((< (entry set) x) (tree (entry set) (left set) (add x (right set))))))
+			
+
+
+(define (set-to-list x)
+	(if (null? x) '()
+		(append (set-to-list (left x))
+		  (cons (entry x) (set-to-list (right x))))))
+		
+(define x (add 0 (add 3 (add 2 (add 1 '())))))
+x
+(check-equal? '(0 1 2 3) (set-to-list x))
+			
+			
+			
