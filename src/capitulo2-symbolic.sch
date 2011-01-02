@@ -39,14 +39,17 @@
 		  (cons (entry x) (set-to-list (right x))))))
 		
 (define x (add 0 (add 3 (add 2 (add 1 '())))))
+(define y (add 9 (add 7 (add 8 '()))))
 x
-(check-equal? '(0 1 2 3) (set-to-list x))
+y
+(check-equal? (set-to-list x) '(0 1 2 3))
+(check-equal? (set-to-list y) '(7 8 9))
 			
 ; usando o acumulador para evitar o append	
 			
-(define (set-to-list2 set)
-	(define (copy-to-list x result))
-		(if (null? x) '()
-			(append (set-to-list (left x))
-		  	(cons (entry x) (set-to-list (right x)))))
-	(copy-to-list set '())
+(define (union s1 s2)
+	(if (null? s1) s2
+		(union (left s1) (union (right s1) (add (entry s1) s2)))))
+
+(check-equal? (set-to-list (union x y)) '(0 1 2 3 7 8 9))
+
